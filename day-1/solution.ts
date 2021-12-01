@@ -1,29 +1,20 @@
 import { promises as fs } from "fs";
 
-let report: number[];
-
-const readInputFile = async () => {
-  await fs.readFile("day-1/input.txt", "utf8").then((r) => {
-    report = r
+export const readInputFile = async (): Promise<number[]> =>
+  await fs.readFile("day-1/input.txt", "utf8").then((data) => {
+    return data
       .split(/\r?\n/)
       .filter((x) => !!x)
       .map((v) => +v);
   });
-};
 
-const countIncreased = (): number => {
-  let numberOfIncreasing: number = 0;
-  for (let i = 0; i < report.length; i++) {
-    if (report[i] > report[i - 1]) {
-      ++numberOfIncreasing;
-    }
-  }
-  return numberOfIncreasing;
+export const countIncreased = (report: number[]): number => {
+  return report.filter((r, i, report) => i !== 0 && r > report[i - 1]).length;
 };
 
 const main = () => {
-  readInputFile().then(() => {
-    console.log(countIncreased());
+  readInputFile().then((report) => {
+    console.log(countIncreased(report));
   });
 };
 
