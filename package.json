@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon -e ts -w ./day-1/part-2 -x npm run watch:serve",
-    "watch:serve": "ts-node day-1/part-2/solution.ts"
+    "watch": "nodemon -e ts -w ./day-2 -x npm run watch:serve",
+    "watch:serve": "ts-node day-2/solution.ts"
   },
   "repository": {
     "type": "git",
